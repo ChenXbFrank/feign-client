@@ -1,5 +1,8 @@
-package com.frank.feignclient;
+package com.frank.client;
 
+import com.frank.domain.dto.BaseResponse;
+import com.frank.domain.dto.Grade;
+import com.frank.domain.dto.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,19 +18,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
         //服务名
         name = "user-service",
         //服务地址
-        url = "http://localhost:8081/api",
-        fallback = UserHihystric.class
+        url = "http://localhost:8081/api"
+//        ,fallback = UserHihystric.class   暂不开启熔断
 )
-public interface UserFeignClient {
+public interface MyFeignClient {
 
     //对应的服务里的接口地址，及请求方式
-    @RequestMapping(value = "/getSuccessInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
     @ResponseBody
-    String getSuccessInfo();
+    BaseResponse getUserInfo();
+
+    @RequestMapping(value = "/getGradeInfo", method = RequestMethod.GET)
+    @ResponseBody
+    BaseResponse getGradeInfo();
 
     @RequestMapping(value = "/getFailInfo", method = RequestMethod.GET)
     @ResponseBody
-    String getFailInfo();
+    BaseResponse getFailInfo();
 
 }
 

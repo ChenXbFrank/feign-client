@@ -1,4 +1,4 @@
-package com.frank.feignclient;
+package com.frank;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-@EnableHystrixDashboard
+//@EnableHystrixDashboard   暂时不开启熔断
 public class FeignClientApplication {
 
     public static void main(String[] args) {
